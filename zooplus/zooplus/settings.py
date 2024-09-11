@@ -19,8 +19,8 @@ NEWSPIDER_MODULE = "zooplus.spiders"
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
-# Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+#Configure maximum concurrent requests performed by Scrapy (default: 16)
+CONCURRENT_REQUESTS = 6
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -63,7 +63,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    "zooplus.pipelines.ZooplusPipeline": 300,
+#   "zooplus.pipelines.ZooplusPipeline": 300,
+#   "zooplus.pipelines.MarkdownPipeline": 200,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

@@ -1,0 +1,1073 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <title>Portal klienta</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link href="/static/styles.css" rel="stylesheet">
+
+    <link rel="icon" href="/static/root/favicon.ico" sizes="any"><!-- 32×32 -->
+    <link rel="apple-touch-icon" href="/static/root/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+    <script>
+    window.addEventListener("spo:pre-lang-change", (event) => {
+        function deleteCookie(name) {
+            document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
+
+        deleteCookie('test-env-modal-shown');
+    });
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('withTestEnvModalGuard', (nextUrl) => ({
+            get warningModalEnabled() {
+                return false;
+            },
+            root: {
+                [':class']() {
+                    return 'no-apple-preview';
+                },
+                ['@auxclick'](e) {
+                    if (this.warningModalEnabled && e.button === 1) { // middle
+                        e.preventDefault();
+                        window.dispatchEvent(new CustomEvent('cmp:test-env-modal-open', {detail: {nextUrl: nextUrl}}));
+                    }
+                },
+                ['@click'](e) {
+                    if (this.warningModalEnabled) {
+                        e.preventDefault();
+                        window.dispatchEvent(new CustomEvent('cmp:test-env-modal-open', {detail: {nextUrl: nextUrl}}));
+                    } else {
+                        window.location.href = nextUrl;
+                    }
+                },
+                ['@contextmenu'](e) {
+                    if (this.warningModalEnabled) {
+                        e.preventDefault();
+                    }
+                },
+            }
+        }));
+    });
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push(
+        {'gtm.start': new Date().getTime(), event: 'gtm.js'}
+    );
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K52G4GPK');
+</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K52G4GPK"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+
+    
+    
+
+    <script type="text/javascript">
+        portalSettings = {"version": "1.3.38", "hostName": "https://systemfala.pl", "cwpHostName": "https://account.systemfala.pl", "supportedLangs": [{"code": "pl", "name_local": "polski"}, {"code": "en", "name_local": "English"}], "staticUrl": "/static/", "disableUserRegistration": false, "disableUserLogin": false, "cookies": {"langCookieName": "KEYCLOAK_LOCALE"}, "footerLinks": [], "pageTitle": "Portal klienta", "meta": {"manifest": "https://systemfala.pl/manifest.json", "appleIcon": "https://systemfala.pl/static/root/apple-touch-icon.png", "favIcon": "https://systemfala.pl/static/root/favicon.ico"}}
+    </script>
+
+    <script src="/static/components/microfront.js"></script>
+    <script defer src="/static/components/portal.js"></script>
+</head>
+<body class="p-0">
+<div class="d-flex flex-column min-vh-100">
+    
+    
+    
+
+
+<nav class="navbar navbar-light pl-0 pr-0 mb-md-3"
+     x-data="{
+        isLoggedIn: false,
+        showedSubmenuId: null,
+        enableLoginButton: false,
+        enableRegisterButton: false,
+        enableMobileMenu: false,
+        init() {
+            window.microfront.isLoggedIn$.subscribe((nextValue) => {
+                this.isLoggedIn = nextValue;
+            });
+
+           window.microfront.disableUserLogin$.subscribe((nextValue) => {
+               this.enableLoginButton = !nextValue;
+           });
+
+           window.microfront.disableUserRegistration$.subscribe((nextValue) => {
+               this.enableRegisterButton = !nextValue;
+           });
+        },
+        reset() {
+            this.showedSubmenuId = null;
+        },
+        handleWindowResize() {
+            this.reset();
+        }
+    }"
+>
+    <div class="container">
+        <div class="w-100 d-flex align-items-center">
+            <button class="d-flex d-lg-none mdc-icon-button navbar-toggler mr-2" type="button">
+                <div class="mdc-icon-button__ripple"></div>
+                <span class="mdc-icon-button__focus-ring"></span>
+                <span class="material-icons notranslate">menu</span>
+            </button>
+
+            <div>
+                <a href="/" class="d-inline-block">
+                    <img class="d-none d-lg-inline-block" src="/static/fala.svg" alt="Fala logo">
+                    <img class="d-inline-block d-lg-none" src="/static/mobile/fala.svg" alt="Fala logo mobile">
+                </a>
+            </div>
+
+            <div class="d-lg-flex align-items-center w-100 pl-5 d-none">
+                <ul class="row m-n3 list-unstyled">
+                    
+                        <li class="menu-element p-3 mdc-menu-surface--anchor" >
+                            <a
+                                
+                                    href="/news"
+                                
+
+                                role="button"
+                                class="d-flex align-items-center py-2"
+                                @mouseleave="showedSubmenuId = null"
+
+                                
+
+                                
+                            >
+                                News
+
+                                
+                            </a>
+
+                            
+                        </li>
+                    
+                        <li class="menu-element p-3 mdc-menu-surface--anchor" >
+                            <a
+                                
+                                    href="https://systemfala.pl/help/"
+                                
+
+                                role="button"
+                                class="d-flex align-items-center py-2"
+                                @mouseleave="showedSubmenuId = null"
+
+                                
+                                    @mouseover="showedSubmenuId = 70"
+                                
+
+                                
+                            >
+                                Help
+
+                                
+                                    <span class="material-icons notranslate ml-2">
+                                        expand_more
+                                    </span>
+                                
+                            </a>
+
+                            
+                                <div class="mdc-menu mdc-menu-surface p-3" x-on:click="$event.stopPropagation();">
+                                    <ul class="mdc-list py-0" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                                        
+                                            <li role="menuitem" class="d-flex flex-column p-3">
+                                                <span class="mdc-list-item__text">
+                                                    <a href="https://www.youtube.com/@SystemFala"
+                                                            
+                                                                target="_blank"
+                                                            
+                                                                class="text-decoration-none spo-m3-label-l d-flex align-items-center text-dark text-nowrap">
+                                                        Instructional video
+
+                                                        
+                                                            <span class="material-icons notranslate ml-2">
+                                                                launch
+                                                            </span>
+                                                        
+                                                    </a>
+                                                </span>
+                                            
+                                            <li role="menuitem" class="d-flex flex-column p-3">
+                                                <span class="mdc-list-item__text">
+                                                    <a href="https://systemfala.pl/help/"
+                                                            
+                                                                class="text-decoration-none spo-m3-label-l d-flex align-items-center text-dark text-nowrap">
+                                                        Help
+
+                                                        
+                                                    </a>
+                                                </span>
+                                            
+                                        </li>
+                                    </ul>
+                                </div>
+                            
+                        </li>
+                    
+                        <li class="menu-element p-3 mdc-menu-surface--anchor" >
+                            <a
+                                
+                                    href="https://planer.systemfala.pl/"
+                                
+
+                                role="button"
+                                class="d-flex align-items-center py-2"
+                                @mouseleave="showedSubmenuId = null"
+
+                                
+
+                                
+                            >
+                                Planner
+
+                                
+                            </a>
+
+                            
+                        </li>
+                    
+                        <li class="menu-element p-3 mdc-menu-surface--anchor" >
+                            <a
+                                
+                                    href="https://systemfala.pl/help/informacje-dla-turystow/system-fala-dla-turystow-pakiet-praktycznych-informacji"
+                                
+
+                                role="button"
+                                class="d-flex align-items-center py-2"
+                                @mouseleave="showedSubmenuId = null"
+
+                                
+
+                                
+                            >
+                                Information for tourists
+
+                                
+                            </a>
+
+                            
+                        </li>
+                    
+                        <li class="menu-element p-3 mdc-menu-surface--anchor" >
+                            <a
+                                
+                                    href="https://innobaltica.pl/en/platforma-zintegrowanych-uslug-mobilnosci-czyli-bilet-fala/"
+                                
+
+                                role="button"
+                                class="d-flex align-items-center py-2"
+                                @mouseleave="showedSubmenuId = null"
+
+                                
+
+                                
+                                    target="_blank"
+                                
+                            >
+                                Project details
+
+                                
+                            </a>
+
+                            
+                        </li>
+                    
+
+                    
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-end w-100">
+                
+
+                <div class="mr-4 d-none d-lg-block">
+                    
+                    <portal-mode-settings></portal-mode-settings>
+                </div>
+
+                <a href="https://account.systemfala.pl/login"
+                   x-cloak
+                   x-show="isLoggedIn"
+                   class="mdc-button mdc-button--unelevated"
+                   id="user-dashboard-btn"
+                   role="button">
+                    <span class="mdc-button__focus-ring d-md-block d-none"></span>
+                    <span class="mdc-button__label d-md-block d-none">My FALA</span>
+                    <img class="d-inline-block d-md-none" src="/static/mobile/user.svg" alt="User">
+                </a>
+
+                
+                    <a href="https://account.systemfala.pl/signup"
+                       x-cloak
+                       x-show="!isLoggedIn && enableRegisterButton"
+                       x-data="withTestEnvModalGuard('https://account.systemfala.pl/login')"
+                       x-bind="root"
+                       class="mdc-button mdc-button--unelevated mr-2 mr-md-3"
+                       id="user-signup-btn"
+                       role="button">
+                        <span class="mdc-button__ripple"></span>
+                        <span class="mdc-button__label d-md-flex d-none">Create account</span>
+                        <span class="bg-transparent circle-icon-container d-inline-block d-md-none m-0 material-icons notranslate p-2">login</span>
+                    </a>
+                
+
+                
+                    <button x-cloak
+                            x-show="!isLoggedIn && enableLoginButton"
+                            class="mdc-button mdc-menu-surface--anchor position-relative"
+                            id="user-login-btn">
+
+                        <span class="mdc-button__ripple"></span>
+                        <span class="mdc-button__label">
+                            <div class="clickable-login-button"
+
+                                 x-data="withTestEnvModalGuard('https://account.systemfala.pl/login')"
+                                 x-bind="root">
+                            </div>
+                            Log in
+                        </span>
+
+                        
+                            <div class="ml-3 border-left d-flex">
+                                <div class="clickable-menu-button"></div>
+                                <i class="material-icons mdc-button__icon pl-3"
+                                   aria-hidden="true">
+                                    expand_more
+                                </i>
+                            </div>
+
+                            <div class="mdc-menu mdc-menu-surface p-3"
+                                 x-on:click="$event.stopPropagation();">
+                                <ul class="mdc-list py-0" role="menu" aria-hidden="true" aria-orientation="vertical"
+                                    tabindex="-1">
+                                    <li role="menuitem" class="d-flex flex-column">
+                                        <a href="https://account.systemfala.pl/login"
+                                           class="text-decoration-none py-3"
+                                           x-data="withTestEnvModalGuard('https://account.systemfala.pl/login')"
+                                           x-bind="root"
+                                        >
+                                            <span class="mdc-list-item__ripple"></span>
+                                            <span class="mdc-list-item__text spo-m3-label-l">Your FALA account</span>
+
+                                        </a>
+                                    </li>
+
+                                    <li class="mdc-list-divider my-0" role="separator"></li>
+
+                                    <li role="menuitem" class="d-flex flex-column">
+                                        <a href="https://account.systemfala.pl/subauth/emvtoken/register"
+                                           class="text-decoration-none py-3"
+                                           x-data="withTestEnvModalGuard('https://account.systemfala.pl/subauth/emvtoken/register')"
+                                           x-bind="root"
+                                        >
+                                            <span class="mdc-list-item__ripple"></span>
+                                            <span class="mdc-list-item__text spo-m3-label-l">Credit card</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        
+                    </button>
+                
+            </div>
+        </div>
+        <div class="collapse navbar-collapse mt-2">
+            <ul class="navbar-nav mr-auto mb-4 d-lg-none">
+                
+                    <li class="nav-item rounded-pill border d-flex flex-column mb-2">
+                        <a href="/news" class="mdc-button p-3 h-auto text-center">
+                            <span class="mdc-icon-button__ripple"></span>
+                            <span class="mdc-icon-button__focus-ring"></span>
+                            News
+                        </a>
+                    </li>
+                
+                    <li class="nav-item rounded-pill border d-flex flex-column mb-2">
+                        <a href="https://systemfala.pl/help/" class="mdc-button p-3 h-auto text-center">
+                            <span class="mdc-icon-button__ripple"></span>
+                            <span class="mdc-icon-button__focus-ring"></span>
+                            Help
+                        </a>
+                    </li>
+                
+                    <li class="nav-item rounded-pill border d-flex flex-column mb-2">
+                        <a href="https://planer.systemfala.pl/" class="mdc-button p-3 h-auto text-center">
+                            <span class="mdc-icon-button__ripple"></span>
+                            <span class="mdc-icon-button__focus-ring"></span>
+                            Planner
+                        </a>
+                    </li>
+                
+                    <li class="nav-item rounded-pill border d-flex flex-column mb-2">
+                        <a href="https://systemfala.pl/help/informacje-dla-turystow/system-fala-dla-turystow-pakiet-praktycznych-informacji" class="mdc-button p-3 h-auto text-center">
+                            <span class="mdc-icon-button__ripple"></span>
+                            <span class="mdc-icon-button__focus-ring"></span>
+                            Information for tourists
+                        </a>
+                    </li>
+                
+                    <li class="nav-item rounded-pill border d-flex flex-column mb-2">
+                        <a href="https://innobaltica.pl/en/platforma-zintegrowanych-uslug-mobilnosci-czyli-bilet-fala/" class="mdc-button p-3 h-auto text-center">
+                            <span class="mdc-icon-button__ripple"></span>
+                            <span class="mdc-icon-button__focus-ring"></span>
+                            Project details
+                        </a>
+                    </li>
+                
+
+                
+            </ul>
+        </div>
+
+        <script>
+            var button = document.querySelector(".navbar-toggler");
+            var menu = document.querySelector(".navbar-collapse");
+            var isOn = false;
+
+            button.addEventListener("click", function () {
+                if (isOn) {
+                    menu.classList.remove("show");
+                } else {
+                    menu.classList.add("show");
+                }
+
+                isOn = !isOn;
+            });
+        </script>
+        <script src="/static/app.js" defer></script>
+    </div>
+</nav>
+
+
+
+
+    
+
+<div x-data="{
+    open: false,
+    modal: null,
+    cookieName: 'SEEN_LEBORK_MODAL',
+    setCookie(name,value,days) {
+        var expires = '';
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = '; expires=' + date.toUTCString();
+        }
+        document.cookie = name + '=' + (value || '')  + expires + '; path=/';
+    },
+    getCookie(name) {
+        var nameEQ = name + '=';
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    },
+}"
+     x-init="
+     $watch('open', (value, prevValue) => {
+                                        if (value && !prevValue) {
+                                            modal?.open?.();
+                                        } else if (prevValue && !value) {
+                                            modal?.close?.();
+                                            setCookie(cookieName, true, 0);
+                                        }
+                                    });
+
+
+                                    setTimeout(() => {
+                                        if (getCookie(cookieName) == 'true') {
+
+                                        } else {
+                                            open = true;
+                                        };
+                                    }, 1)">
+
+    <template x-if="open">
+        <div x-ref="dialogRef"
+             x-init="modal = new MDCDialog($refs.dialogRef);
+            modal.listen('MDCDialog:closed', sync);"
+             x-data="{
+            sync() {
+                open = false;
+                modal.unlisten('MDCDialog:closed', this.sync)
+            }
+        }"
+             class="mdc-dialog">
+            <div class="mdc-dialog__container">
+                <div class="mdc-dialog__surface"
+                     role="alertdialog"
+                     aria-modal="true"
+                     aria-labelledby="my-dialog-title"
+                     aria-describedby="my-dialog-content"
+                >
+                    <div class="mdc-dialog__content px-3 px-sm-4 py-4 py-sm-5 overflow-hidden" id="my-dialog-content">
+                        <div class="d-flex flex-column align-items-center">
+                            
+
+                            <div class="spo-m3-display-s mb-2 mb-sm-3 text-dark text-center">
+                                Welcome to the passenger portal of the FALA system!
+                            </div>
+
+                            <div class="spo-m3-body-l text-light text-center mb-2 mb-sm-3">
+                                <p>
+                                    If you are a resident of <strong>Lębork, Władysławowo, Puck, Chojnice, Gdynia, Gdańsk, Sopot, Słupsk or the surrounding areas</strong> and you use public transport in these cities, we invite you to create an account in the FALA system today. You can order a FALA card and we will deliver it to the address you specify.<br><br>Currently, tests of the system with passengers are underway, during which further WAVE functions are successively made available. You can check the detailed rules of public tests for a given city in the "frequently asked questions" tab. We will inform passengers about the next new testing steps in the "news" tab.
+                                </p>
+                            </div>
+
+                            <button class="mdc-button mdc-button--unelevated"
+                                    type="button"
+                                    @click="open = false"
+                            >
+                                <span class="mdc-button__ripple"></span>
+                                <span class="mdc-button__label">Close</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mdc-dialog__scrim"></div>
+        </div>
+    </template>
+</div>
+
+
+
+    
+        
+
+
+<div x-data="{
+    open: false,
+    showMore: false,
+    modal: null,
+    cookieName: 'COOKIES_ACCEPT',
+    policyUrl: '/documents/polityka-prywatnosci',
+    setCookie(name,value,days) {
+        var expires = '';
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = '; expires=' + date.toUTCString();
+        }
+        document.cookie = name + '=' + (value || '')  + expires + '; path=/';
+    },
+    getCookie(name) {
+        var nameEQ = name + '=';
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    },
+    saveCookie() {
+        this.setCookie(this.cookieName, true, 365);
+    },
+    get shouldOpen() {
+        const policyUrlPathname = new URL(this.policyUrl, window.location.origin).pathname;
+        return !(this.getCookie(this.cookieName) === 'true') && (policyUrlPathname !== window.location.pathname)
+    }
+}"
+
+     x-init="$watch('open', (value, prevValue) => {
+            if (value && !prevValue) {
+                modal?.open?.();
+            } else if (prevValue && !value) {
+                modal?.close?.();
+            }
+        });
+
+        setTimeout(() => {
+            if (shouldOpen ) {
+                open = true;
+            }
+        }, 1)">
+
+
+    <div x-show="open" x-ref="cookiesPolicyModalId"
+         x-data="{
+                 init() {
+                     modal = new MDCDialog(this.$refs.cookiesPolicyModalId);
+                     modal.listen('MDCDialog:closed', this.sync);
+                 },
+                sync() {
+                    open = false;
+                    modal.unlisten('MDCDialog:closed', this.sync)
+                }
+            }"
+         :style="{ width: 792 }"
+         class="mdc-dialog">
+        <div class="mdc-dialog__container">
+            <div class="mdc-dialog__surface"
+                 role="alertdialog"
+                 aria-modal="true"
+                 :style="{ 'width': '790px' }"
+            >
+                <h2 class="mdc-dialog__title spo-m3-headline-s">
+                    Cookie policy
+                </h2>
+
+                <div class="mdc-dialog__content overflow-hidden" id="my-dialog-content">
+                    <div class="d-flex flex-column gap-4">
+                        <p class="spo-m3-body-l mb-0"
+                           x-init="$el.querySelectorAll('a').forEach((el) => el.target = '_blank')">
+                            Our website uses cookies. Cookies enable you to take full advantage of the site and us to collect statistical data to help us optimise the site and tailor content to your needs. Accept cookies so you can fully enjoy the site. Read the <a href='/documents/polityka-prywatnosci'>Cookie Policy</a> to find out more.
+                        </p>
+
+                        <div class="d-flex justify-content-between flex-column-reverse flex-md-row gap-3">
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+
+                            <button class="mdc-button mdc-button--outlined mdc-button--small" @click="open = false">
+                                <span class="mdc-button__ripple"></span>
+                                <span class="mdc-button__label">
+                                        Reject all
+                                    </span>
+                            </button>
+
+                            <button class="mdc-button mdc-button--unelevated mdc-button--small mdc-button--dark"
+                                    @click="saveCookie(); open = false">
+                                <span class="mdc-button__ripple"></span>
+                                <span class="mdc-button__label">
+                                         Accept all
+                                    </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mdc-dialog__scrim"></div>
+    </div>
+</div>
+    
+
+    <div class="d-flex flex-column flex-grow-1 overflow-x-hidden">
+        
+    
+        <main class="container py-section">
+            
+            
+<nav aria-label="breadcrumb" class="mb-2">
+    <ol class="breadcrumb d-none d-md-flex align-items-center">
+        <li class="breadcrumb-item"><a href="/" class="text-underline">Start</a></li>
+
+        
+            
+                <li class="breadcrumb-item active spo-m3-label-l" aria-current="page">
+                    News
+                </li>
+            
+        
+    </ol>
+</nav>
+
+
+            <h1 class="mb-5 spo-font-weight-500">
+                News
+            </h1>
+
+            <div class="pb-3">
+                <div class="row m-n3">
+                    
+
+    <div class="col-12 p-3">
+        
+
+
+<div x-data
+     @click="window.location = '/news/trzyetapowy-plan-waczenia-kolei-do-systemu-fala'"
+     class="border p-4 rounded-sm mdc-ripple-surface cursor-pointer d-flex flex-column">
+    <div class="row m-n3">
+        <div class="p-3 col-12 col-sm-4 col-md-2">
+            <div class="embed-responsive embed-responsive-1by1">
+                <img src="
+                   /files/get/?name=blog.PostImage/bytes/filename/mimetype/foto_003A.jpg
+                " alt="" class="rounded-sm w-100 h-auto position-absolute top-0"/>
+            </div>
+        </div>
+
+        <div class="p-3 col-12 col-sm-8 col-md-10 d-flex flex-column">
+            <p class="spo-neutral-color-600 mb-0 spo-m3-body-l">
+                27.06.2024 15:20
+            </p>
+
+            <div class="mb-3 spo-m3-headline-s">A three-stage plan to include railways in the FALA System</div>
+
+            <div class="body2 children-font-size-inherit line-clamp line-clamp-3">
+                <span>
+                    <p>Sp&oacute;łka InnoBaltica, odpowiedzialna za wdrożenie Systemu FALA w wojew&oacute;dztwie pomorskim, oraz jego wykonawca - firma Asseco Data Systems podsumowały stan realizacji projektu oraz dalsze plany. Stopniowo rośnie zainteresowanie zakupem bilet&oacute;w przez ten kanał w komunikacji miejskiej. Jesienią z FALĄ pojadą pierwsi pasażerowie kolei. &nbsp;&nbsp;</p>
+<p>InnoBaltica wraz z Asseco Data Systems prognozują, że w drugim p&oacute;łroczu 2024 nastąpi czas pełnego ustabilizowania działania systemu w komunikacji miejskiej, czyli w autobusach, trolejbusach i tramwajach. FALA objęła dotychczas: Tr&oacute;jmiasto, Słupsk, Chojnice, Puck, Władysławowo oraz Lębork. Wdrażane są jeszcze poprawki z priorytetem wyznaczonym dla sprawności walidator&oacute;w, czyli urządzeń FALI w pojazdach. Sytuacja na tym polu jest znacznie lepsza aniżeli na początku trwających test&oacute;w publicznych, ale nadal zbyt często zdarzają się problemy. Są one o tyle istotniejsze od innych, że pasażerowie zdecydowanie najchętniej decydują się korzystanie z FALI poprzez własne karty płatnicze.</p>
+<p>- Szacujemy, że ok. 90% dotychczasowych transakcji realizowanych zostało w systemie z wykorzystaniem osobistych kart płatniczych przykładanych właśnie do naszych urządzeń. Oczywiście, z czasem te proporcje mogą ulec zmianie. Użycie karty płatniczej w pojeździe to najprostsza forma zakupu biletu, ponieważ nie wymaga założenia konta w systemie ani personalizowania ustawień tego konta. Od początku testowego publicznego działania FALI pasażerowie zakupili ponad 360 tysięcy bilet&oacute;w wszelkiego rodzaju, od jednorazowych po roczne &ndash; wyjaśnia Radomir Matczak, prezes InnoBaltiki.</p>
+<p><strong>PO STABILIZACJI &bdquo;KOLEJOWEJ&rdquo; MOŻLIWE BILETY METROPOLITALNE</strong></p>
+<p>Jak podkreślają eksperci sp&oacute;łki oraz ADS taki wolumen testowej sprzedaży pozwolił już na zidentyfikowanie większości mankament&oacute;w i niedogodności oraz sukcesywne ich eliminowanie. Teraz podobny proces konieczny jest dla części kolejowej Systemu FALA. Testy wewnętrzne zabierają więcej czasu niż zakładano, ale ostatecznie obie firmy wsp&oacute;lnie przedstawiły trzyetapowy plan test&oacute;w publicznych w ramach połączeń Polregio oraz SKM PKP Tr&oacute;jmiasto (na terenie wojew&oacute;dztwa). Wedle niego pierwsi pasażerowie z FALĄ mają pojechać pociągami we wrześniu, kupując bilety jednorazowe i okresowe w aplikacji lub portalu.</p>
+<p><strong>PLAN TEST&Oacute;W PUBLICZNYCH SYSTEMU W RAMACH POŁĄCZEŃ KOLEJOWYCH</strong></p>
+<p><strong>KROK 1</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ZAKUP BILETU &bdquo;OD-DO&rdquo; W APLIKACJI ORAZ NA PORTALU</p>
+<p>(termin - wrzesień 2024 r.)</p>
+<p><strong>KROK 2</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ZAKUP BILETU &bdquo;OD-DO&rdquo; NA FALOMACIE</p>
+<p>(termin zależnie od ustabilizowania systemu w kroku poprzednim)&nbsp;</p>
+<p><strong>KROK&nbsp;3</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PODR&Oacute;Ż&nbsp;DYNAMICZNA &bdquo;CHECK-IN &ndash; CHECK-OUT&rdquo;&nbsp;</p>
+<p>(termin zależnie od ustabilizowania systemu w kroku poprzednim)</p>
+<p>- Pierwszym krokiem będzie udostępnienie podr&oacute;żnym zakupu bilet&oacute;w kolejowych na z g&oacute;ry określoną trasę. Odbędzie się to dwuetapowo, najpierw przez aplikację i portal podr&oacute;żnego, a następnie w falomatach. W ostatnim kroku wprowadzimy sprzedaż w modelu podr&oacute;ży dynamicznej &bdquo;check-in &ndash; check-out&rdquo;.&nbsp;Warto&nbsp;podkreślić, że&nbsp;będzie&nbsp;to pierwsza taka taryfa kolejowa w Polsce. Nikt wcześniej nie podjął się integracji kolei i transportu miejskiego na taką skalę&nbsp;- podkreśla Andrzej Dopierała, prezes Asseco Data Systems.</p>
+<p>Kilkuetapowa koncepcja upublicznienia usługi w ramach kolei jest następstwem doświadczeń z fazy wdrożenia jej w komunikacji miejskiej. Wtedy skorygowane zostały pierwotne założenia i do systemu były włączane stopniowo poszczeg&oacute;lne miasta od mniejszych do największych, a potem dokładane kolejne funkcje.</p>
+<p>&ndash; Niezmiennie podążamy metodą małych krok&oacute;w, świadomi tego, że pasażerowie liczą na większe tempo. Niemniej, testy publiczne są szalenie istotne, a ich nadrzędnym celem jest wypracowanie stabilizacji technicznej i jakościowej. Na tym fundamencie chcielibyśmy przekonać organizator&oacute;w, aby wprowadzić w Systemie FALA nową, prostą i ujednoliconą taryfę, co byłoby poważnym ułatwieniem dla wszystkich pasażer&oacute;w, zar&oacute;wno mieszkańc&oacute;w, jak i turyst&oacute;w. Dopiero w&oacute;wczas nasz powszechny i sp&oacute;jny technicznie system m&oacute;głby pokazać w pełni swoje możliwości. Najpierw jednak musimy udowodnić użytkownikom transportu zbiorowego swoją gotowość do tego typu rozwiązań &ndash; zapowiada prezes R. Matczak. &nbsp;</p>
+<p>Sp&oacute;łka InnoBaltica odbiera wiele sygnał&oacute;w, że pasażerowie czekają na rozwiązanie maksymalnie integrujące kolej z komunikacją miejską, także w wymiarze sprzedaży bilet&oacute;w.</p>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+
+    <div class="col-12 p-3">
+        
+
+
+<div x-data
+     @click="window.location = '/news/system-fala-300-000-biletow-zakupionych-w-ramach-testow-publicznych'"
+     class="border p-4 rounded-sm mdc-ripple-surface cursor-pointer d-flex flex-column">
+    <div class="row m-n3">
+        <div class="p-3 col-12 col-sm-4 col-md-2">
+            <div class="embed-responsive embed-responsive-1by1">
+                <img src="
+                   /files/get/?name=blog.PostImage/bytes/filename/mimetype/001a.jpg
+                " alt="" class="rounded-sm w-100 h-auto position-absolute top-0"/>
+            </div>
+        </div>
+
+        <div class="p-3 col-12 col-sm-8 col-md-10 d-flex flex-column">
+            <p class="spo-neutral-color-600 mb-0 spo-m3-body-l">
+                12.06.2024 11:33
+            </p>
+
+            <div class="mb-3 spo-m3-headline-s">FALA system: 300,000 tickets purchased as part of public tests</div>
+
+            <div class="body2 children-font-size-inherit line-clamp line-clamp-3">
+                <span>
+                    <p>InnoBaltica, responsible for implementing the project in the Pomeranian Voivodeship, has published further statistics on public tests of the FALA System. Interest in purchasing tickets through this channel is gradually growing. Their number exceeded 300,000.<br />- We estimate that approximately 90% of transactions to date have been carried out in the system using personal payment cards placed on our devices. Of course, these proportions may change over time. Using a payment card in the vehicle is the simplest way to purchase a ticket because it does not require creating an account in the system or personalizing the account settings. Since the beginning of the public test operation of WALI, passengers have purchased over 300,000 tickets of all types, from single-use to annual ones - explains Cyprian Maciejewski, InnoBaltika spokesman.<br />During the recent two long weekends, the interest in purchasing tickets in the FALA System increased significantly, not only among tourists, but also among residents who were going somewhere for recreational purposes. The company is developing communication and information activities under the slogan "Travel with WAVE, the way you feel comfortable." Among other things, we cooperate with local governments, tourist organizations and the airport.<br />- In the case of guests in our region, we focus on encouraging passengers primarily to buy electronic tickets with WAVE by paying with a payment card in public transport - says the spokesman. Currently, the contractor of the FALA System - Asseco Data Systems - together with InnoBaltika is in a series of internal tests and intensive preparations for the launch of several-stage public tests as part of the Polregio and SKM Tr&oacute;jmiasto railway connections.</p>
+<p>PUBLIC TESTS OF THE FALA SYSTEM &ndash; STATISTICS FOR PUBLIC TRANSPORTATION<br />(as of June 7, 2024)</p>
+<p>SALE<br />301,014 - the sum of tickets of all types purchased as part of system tests<br />&bull; 252,603 ​​&ndash; number of single tickets<br />&bull; 45,613 &ndash; number of time tickets<br />&bull; 2,798 &ndash; number of monthly tickets<br />&bull; 90% of operations are carried out with payment cards on devices</p>
+<p>USERS / INFRASTRUCTURE<br />&bull; 41,916 accounts created in the system<br />&bull; 25,162 app downloads<br />&bull; 8,614 FALA Cards ordered/received<br />&bull; 4,400 devices available in vehicles</p>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+
+    <div class="col-12 p-3">
+        
+
+
+<div x-data
+     @click="window.location = '/news/oszusci-podszywaja-sie-pod-system-fala-uwaga-na-podejrzane-linki'"
+     class="border p-4 rounded-sm mdc-ripple-surface cursor-pointer d-flex flex-column">
+    <div class="row m-n3">
+        <div class="p-3 col-12 col-sm-4 col-md-2">
+            <div class="embed-responsive embed-responsive-1by1">
+                <img src="
+                   /files/get/?name=blog.PostImage/bytes/filename/mimetype/uwaga_sf.jpg
+                " alt="" class="rounded-sm w-100 h-auto position-absolute top-0"/>
+            </div>
+        </div>
+
+        <div class="p-3 col-12 col-sm-8 col-md-10 d-flex flex-column">
+            <p class="spo-neutral-color-600 mb-0 spo-m3-body-l">
+                30.03.2024 11:59
+            </p>
+
+            <div class="mb-3 spo-m3-headline-s">Oszuści podszywają się pod System FALA. Uwaga na podejrzane linki!</div>
+
+            <div class="body2 children-font-size-inherit line-clamp line-clamp-3">
+                <span>
+                    <p>W związku z wykrytymi pr&oacute;bami wyłudzeń, sp&oacute;łka InnoBaltica informuje, że nie sprzedaje kart podarunkowych Systemu FALA, a jedyną stroną internetową, przez kt&oacute;rą można zam&oacute;wić Kartę FALA jest <a href="https://systemfala.pl/">https://systemfala.pl/</a>. Sp&oacute;łka powiadomiła policję o oszustach, pr&oacute;bujących pobierać pieniądze za zakup Karty FALA poprzez fałszywe strony internetowe oraz profile społecznościowe.</p>
+<p><strong>InnoBaltica nie promuje Karty FALA jako karty podarunkowej</strong></p>
+<p>Sp&oacute;łka ostrzega przed działaniami oszust&oacute;w, kt&oacute;rzy założyli profil na portalu Facebook oraz fałszywą stronę www, podszywając się pod kampanię @ZTM Gdańsk oraz promocję karty podarunkowej Systemu FALA - "Karta transportu publicznego Tr&oacute;jmiasto". Strona ta wyłudza pieniądze od pasażer&oacute;w. Jedyną legalną i bezpieczną stroną, przez kt&oacute;rą można zam&oacute;wić Kartę FALA (<strong>pierwszy egzemplarz jest bezpłatny</strong>), jest <a href="https://systemfala.pl/,">https://systemfala.pl/,</a> możliwe też jest wykorzystanie do tego celu aplikacji &ldquo;System FALA&rdquo;.</p>
+<p><img src="../../../../../files/download/?name=root.CmsImageStore%2Fbytes%2Ffilename%2Fmimetype%2FUWAGA_-.jpg" alt="" width="1200" height="519" /></p>
+<p><strong>Natychmiastowe poinformowanie organ&oacute;w ścigania</strong></p>
+<p>Sprawa została już przekazana policji i prokuraturze, sp&oacute;łka InnoBaltica jest w pełnej gotowości do pomocy i wsp&oacute;łpracy, a fałszywy profil został zgłoszony administracji portalu Facebook (Meta). Wszelkie podejrzane działania prosimy sygnalizować odpowiednim służbom.</p>
+<p>W załączeniu:</p>
+<ul>
+<li><span style="font-size: 14pt;"><strong>screeny fałszywego profilu / strony</strong></span><br /><br /><img src="../../../../../files/download/?name=root.CmsImageStore%2Fbytes%2Ffilename%2Fmimetype%2Fscreen_fa%C5%82szywa_strona.png" alt="" width="1200" height="569" /><br /><br /></li>
+<li><span style="font-size: 14pt;"><strong>grafika ostrzegawcza</strong></span><br /><br /><img src="../../../../../files/download/?name=root.CmsImageStore%2Fbytes%2Ffilename%2Fmimetype%2FZrzut_ekranu_2024-03-29_104348.png" alt="" width="1200" height="536" /></li>
+</ul>
+<p><br /><span style="font-size: 14pt;"><strong><img src="../../../../../files/download/?name=root.CmsImageStore%2Fbytes%2Ffilename%2Fmimetype%2FZrzut_ekranu_2024-03-29_114008.png" alt="" width="1200" height="479" /></strong></span></p>
+<ul>
+<li><span style="font-size: 14pt;"><strong>pismo &ndash; zawiadomienie o podejrzeniu popełnienia przestępstwa<br /><br /><a href="https://systemfala.pl/files/download/?name=root.DocumentFileStore%2Fbytes%2Ffilename%2Fmimetype%2FZawiadomienie_-_Policja.pdf" target="_blank" rel="noopener"><img src="https://systemfala.pl/files/download/?name=root.DocumentFileStore%2Fbytes%2Ffilename%2Fmimetype%2FZawiadomienie_-_Policja.pdf" alt="" />Zawiadomienie o popełnieniu przestępstwa</a><br /></strong></span></li>
+</ul>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+
+    <div class="col-12 p-3">
+        
+
+
+<div x-data
+     @click="window.location = '/news/pasazerowie-preferuja-zakup-biletu-karta-patnicza-w-pojezdzie'"
+     class="border p-4 rounded-sm mdc-ripple-surface cursor-pointer d-flex flex-column">
+    <div class="row m-n3">
+        <div class="p-3 col-12 col-sm-4 col-md-2">
+            <div class="embed-responsive embed-responsive-1by1">
+                <img src="
+                   /files/get/?name=blog.PostImage/bytes/filename/mimetype/reklama_02.02.24_FALA.jpg
+                " alt="" class="rounded-sm w-100 h-auto position-absolute top-0"/>
+            </div>
+        </div>
+
+        <div class="p-3 col-12 col-sm-8 col-md-10 d-flex flex-column">
+            <p class="spo-neutral-color-600 mb-0 spo-m3-body-l">
+                20.03.2024 11:53
+            </p>
+
+            <div class="mb-3 spo-m3-headline-s">Pasażerowie preferują zakup biletu kartą płatniczą w pojeździe</div>
+
+            <div class="body2 children-font-size-inherit line-clamp line-clamp-3">
+                <span>
+                    <p>Minął miesiąc odkąd urządzenia Systemu FALA zostały uruchomione we wszystkich pojazdach komunikacji miejskiej w gminach, kt&oacute;re uczestniczą w tym regionalnym projekcie. Sp&oacute;łka InnoBaltica, odpowiedzialna za wdrożenie systemu, przedstawiła pierwsze dane z dotychczasowych test&oacute;w publicznych. &nbsp;</p>
+<p>System FALA niebawem przekroczy 100&nbsp;000 operacji finansowych wykonanych przez pasażer&oacute;w. &ndash; Oczywiście, w skali transportu publicznego choćby w samym Tr&oacute;jmieście to mała pr&oacute;ba, ale dla procesu wdrażania FALI to już bardzo cenne dane. Takie liczby operacji i transakcji nie są po prostu możliwe do osiągnięcia w ramach test&oacute;w zamkniętych. Statystyki pozwalają nam na wstępne, bardzo ostrożne wnioski na temat zachowań podr&oacute;żujących &ndash; wyjaśnia Radomir Matczak, prezes InnoBaltiki.</p>
+<p><strong>IM PROŚCIEJ, TYM LEPIEJ. NIE BOIMY SIĘ UŻYWAĆ KART</strong></p>
+<p>Aż 86% zakup&oacute;w bilet&oacute;w pasażerowie czynią w najprostszym trybie, czyli przykładając swoją kartę płatniczą do czytnika lub falomatu, kt&oacute;re znajdują się w każdym pojeździe komunikacji miejskiej w Gdańsku, Gdyni, Sopocie, Chojnicach, Słupsku, Pucku, Władysławowie i Lęborku, <br />a także w powiązanych z nimi liniami podmiejskimi. &ndash; Do takiej czynności można, ale nie trzeba posiadać konta FALA. Jest to wariant najwygodniejszy, więc zgodnie z przewidywaniami stał się on liczbowo dominujący. Gdy wykonawca upora się ze zleconymi przez nas poprawkami w aplikacji to możliwe, że także ten kanał sprzedaży bilet&oacute;w zyska na popularności. Niemniej, już teraz można zakładać, że falomaty i czytniki staną się gł&oacute;wnym &bdquo;kasownikiem&rdquo; dla klienta Systemu FALA &ndash; zapowiada Radomir Matczak. &nbsp;</p>
+<p><strong>FALA NIE TYLKO DO &bdquo;JEDNORAZ&Oacute;WEK&rdquo;</strong></p>
+<p>Struktura sprzedaży bilet&oacute;w wskazuje, że 89% dotychczasowych transakcji dotyczy bilet&oacute;w jednorazowych, 9,5% to bilety czasowe (75 minut, dobowe), a 1,5% stanowią bilety okresowe (od dwutygodniowych do rocznych). InnoBaltica wraz z wykonawcą &ndash; Asseco Data Systems &ndash; przygotowują się do poszerzenia test&oacute;w o funkcję &bdquo;optymalizacji&rdquo;, w ramach kt&oacute;rej system automatycznie przy przesiadkach i wielu podr&oacute;żach dziennie będzie zamieniał bilety jednorazowe na czasowe, czyli korzystniejsze cenowo dla pasażera. Z czasem statystyki mogą więc ulec zmianie.</p>
+<p><strong>PRIORYTET TEST&Oacute;W &ndash; USTABILIZOWAĆ SYSTEM</strong></p>
+<p>Jak podkreślają przedstawiciele InnoBaltiki priorytetem w obecnym, testowym etapie, jest ustabilizowanie systemu i usuwanie lub marginalizowanie pojawiających się błęd&oacute;w. Z perspektywy podr&oacute;żującego mowa tu np. o problemach z logowaniem, zawieszających się urządzeniach, długim czasie oczekiwania na komunikat w urządzeniach, czy niepoprawnej geolokalizacji (wyświetlanie niewłaściwych przystank&oacute;w). &ndash; Oczekujemy od wykonawcy wyraźnej poprawy w tych sprawach. Następnie skupimy się na przekonywaniu większej liczby pasażer&oacute;w do korzystania z usług. Czynimy to metodą małych, sukcesywnie stawianych krok&oacute;w &ndash; zapewnia prezes InnoBaltiki.</p>
+<p>&nbsp;</p>
+<p><strong>TESTY PUBLICZNE SYSTEMU FALA &ndash; STATYSTYKI DLA KOMUNIKACJI MIEJSKIEJ</strong></p>
+<ul>
+<li>Pełna flota pojazd&oacute;w komunikacji miejskiej włączonych do systemu została osiągnięta 21 lutego 2024 r.</li>
+<li>Dane uwzględniają publiczne testy systemu do dnia 18 marca 2024 r. Liczby podane są w zaokrągleniu</li>
+</ul>
+<p><strong>SYSTEM FALA NA POMORZU</strong></p>
+<ul>
+<li>87 000 - suma bilet&oacute;w wszystkich rodzaj&oacute;w zakupionych w ramach test&oacute;w systemu</li>
+<li>kanały sprzedaży: aplikacja 11% transakcji, portal 1%, urządzenia w pojazdach (czytniki kart i falomaty) 88%</li>
+<li>struktura sprzedaży: 89% transakcji - bilety jednorazowe, 9,5% czasowe, 1,5% bilety okresowe</li>
+<li>86% operacji kartami płatniczymi na urządzeniach / 14% operacji z kontem FALA</li>
+</ul>
+<p><strong>UŻYTKOWNICY / INFRASTRUKTURA</strong></p>
+<ul>
+<li>22 000 założonych kont w systemie</li>
+<li>14 500 pobrań aplikacji</li>
+<li>6 400 zam&oacute;wionych/odebranych Kart FALA</li>
+<li>1 300 kart płatniczych ustawionych jako stały identyfikator do konta w systemie</li>
+<li>4 400 urządzeń dostępnych w pojazdach</li>
+</ul>
+<p><strong>SYSTEM FALA W TR&Oacute;JMIEŚCIE </strong></p>
+<ul>
+<li><strong>Linie ZTM Gdańsk</strong></li>
+</ul>
+<p>48 000 bilet&oacute;w zakupionych w ramach Systemu FALA (wszystkie rodzaje)</p>
+<ul>
+<li><strong>Linie ZKM Gdynia</strong></li>
+</ul>
+<p>15 000 bilet&oacute;w zakupionych w ramach Systemu FALA (wszystkie rodzaje)</p>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+
+    <div class="col-12 p-3">
+        
+
+
+<div x-data
+     @click="window.location = '/news/kilkugodzinna-awaria-szyfrowanego-acza-telekomunikacyjnego'"
+     class="border p-4 rounded-sm mdc-ripple-surface cursor-pointer d-flex flex-column">
+    <div class="row m-n3">
+        <div class="p-3 col-12 col-sm-4 col-md-2">
+            <div class="embed-responsive embed-responsive-1by1">
+                <img src="
+                   /files/get/?name=blog.PostImage/bytes/filename/mimetype/komunikat_08.03.2024.jpg
+                " alt="" class="rounded-sm w-100 h-auto position-absolute top-0"/>
+            </div>
+        </div>
+
+        <div class="p-3 col-12 col-sm-8 col-md-10 d-flex flex-column">
+            <p class="spo-neutral-color-600 mb-0 spo-m3-body-l">
+                08.03.2024 17:05
+            </p>
+
+            <div class="mb-3 spo-m3-headline-s">Kilkugodzinna awaria szyfrowanego łącza telekomunikacyjnego</div>
+
+            <div class="body2 children-font-size-inherit line-clamp line-clamp-3">
+                <span>
+                    <p>8 marca 2024 r. urządzenia Systemu FALA w autobusach, trolejbusach i tramwajach zanotowały czasową przerwę w działaniu. W tym czasie bez zakł&oacute;ceń działała aplikacja &bdquo;System FALA&rdquo; oraz portal systemfala.pl, umożliwiając zakup wszystkich bilet&oacute;w.</p>
+<p>Awaria urządzeń była spowodowana zerwaniem dedykowanego szyfrowanego łącza telekomunikacyjnego. To pierwsze tego rodzaju zdarzenie w trakcie publicznych test&oacute;w Systemu FALA. Problem otrzymał najwyższy priorytet i po kilku godzinach został opanowany. Czytniki kart i falomaty stopniowo powracają do normalnej pracy. Proces ten powinien się zakończyć do wieczora.</p>
+<p>InnoBaltica oraz Assecco Data Systems (wykonawca systemu) szczeg&oacute;łowo analizują dzisiejszą sytuację. Pracujemy nad tym, aby w przyszłości wyeliminować tego typu awarie. Bardzo przepraszamy pasażer&oacute;w za niedogodności.</p>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+
+
+
+    <div id="button-container" class="col-12 p-3 d-flex justify-content-center">
+        <button type="button"
+                class="mdc-button mdc-button--outlined"
+                hx-get="/news/?page=2"
+                hx-trigger="click"
+                hx-target="#button-container"
+                hx-swap="outerHTML"
+        >
+             blog.show-more
+        </button>
+    </div>
+
+                </div>
+            </div>
+        </main>
+    
+
+    </div>
+
+    
+
+
+<footer class="container">
+    <div class="footer-frame">
+        <div class="d-flex justify-content-center mt-4 mt-lg-5">
+            <div class="pr-5">
+                <a href="/">
+                    <img src="/static/fala.svg" alt="Fala logo"/>
+                </a>
+            </div>
+            <div class="pt-3">
+                <img class="w-100 d-none d-md-inline-block" src="/static/img/pomorskie.svg"
+                     alt="Pomorskie logo"/>
+                <img class="w-100 d-inline-block d-md-none" src="/static/mobile/pomorskie.svg"
+                     alt="Pomorskie logo"/>
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-12 col-md-6 offset-md-3">
+                <div class="row m-n3 justify-content-center">
+                    
+                        <a href="
+                        https://systemfala.pl/help/kontakt-z-pomoca-techniczna/kontakt-z-pomoca-techniczna
+                    "
+                           class="col-auto p-3 text-underline footer-link"
+                                
+                           target="_blank"
+                                
+                        >Kontakt</a>
+                    
+                        <a href="
+                        https://systemfala.pl/help/
+                    "
+                           class="col-auto p-3 text-underline footer-link"
+                                
+                        >Help</a>
+                    
+                        <a href="
+                        https://innobaltica.pl/innobaltica/
+                    "
+                           class="col-auto p-3 text-underline footer-link"
+                                
+                           target="_blank"
+                                
+                        >InnoBaltica</a>
+                    
+                        <a href="
+                        https://innobaltica.pl/badania/
+                    "
+                           class="col-auto p-3 text-underline footer-link"
+                                
+                           target="_blank"
+                                
+                        >BIT system</a>
+                    
+                        <a href="
+                        /files/get/?name=root.FooterLinkDocument/bytes/filename/mimetype/REGULAMIN_SYSTEMU_FALA_13092023_v2_zkz7Wq1.pdf
+                    "
+                           class="col-auto p-3 text-underline footer-link"
+                                
+                           target="_blank"
+                                
+                        >Regulations of the FALA System</a>
+                    
+                        <a href="
+                        /documents/ochrona-danych-osobowych
+                    "
+                           class="col-auto p-3 text-underline footer-link"
+                                
+                           target="_blank"
+                                
+                        >Personal data protection</a>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <div class="w-100 d-flex justify-content-center rights">
+            <div class="spo-m3-title-s text-muted">2023 All rights reserved</div>
+        </div>
+    </div>
+</footer>
+
+</div>
+
+</body>
+</html>

@@ -9,13 +9,13 @@ class FaqzoospiderSpider(scrapy.Spider):
 
     def parse(self, response):
         # Linki kategorii na stronie głównej
-        categories = response.xpath('//div[@class="card card--shadow card--animated center articleSection"]/a/@href').getall()
+        categories = response.xpath('//div[@class="card card--animated center articleSection"]/a/@href').getall()
         for category in categories:
             yield response.follow(category, callback=self.parse_category)
 
     def parse_category(self, response):
         # Znajdź wszystkie artykuły
-        articles =  response.xpath('//div[@class="card--shadow"]/a/@href').getall()
+        articles =  response.xpath('//ul[@class="article-list"]/a/@href').getall()
         for article in articles:
             yield response.follow(article, callback=self.parse_article)
 
