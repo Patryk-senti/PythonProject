@@ -1,0 +1,13 @@
+| **Title**       | **URL**           | **Part**              |
+|-----------------|-------------------|-----------------------|
+| Mieszkam za granicą – czy mogę zarejestrować się w polskiej bazie Dawców szpiku?         | [https://www.dkms.pl/dawka-wiedzy/o-rejestracji/mieszkam-za-granica-czy-moge-zarejestrowac-sie-polskiej-bazie-dawcow-szpiku](https://www.dkms.pl/dawka-wiedzy/o-rejestracji/mieszkam-za-granica-czy-moge-zarejestrowac-sie-polskiej-bazie-dawcow-szpiku)    | Part 1 of 3          |
+
+# Mieszkam za granicą – czy mogę zarejestrować się w polskiej bazie Dawców szpiku?
+
+#### W różnych miejscach na świecie organizowane są akcje rejestracyjne po to, żeby zwiększyć szanse na znalezienie zgodnych Dawców dla Pacjentów potrzebujących przeszczepienia. Ogólna zasada, dotycząca rejestracji w bazie potencjalnych Dawców szpiku zakłada, że mogą do niej dołączyć wyłącznie osoby, zamieszkujące dany kraj. Ten schemat postępowania dotyczy wszystkich baz Dawców na świecie. **Potencjalnym Dawcą szpiku i komórek macierzystych\- w bazie Fundacji DKMS \- może być osoba, mieszkająca na stałe w Polsce**.
+
+
+### DAWCA DOSTĘPNY OD ZARAZ!
+
+
+Dawcą może być osoba zamieszkująca dany kraj **na stałe \-** w taki sposób postępują wszystkie bazy na świecie. Kryterium to jest niezwykle istotne i wynika nie tylko z potrzeby stałego kontaktu z potencjalnym Dawcą, ale przede wszystkim \- w przypadku znalezienia „bliźniaka genetycznego” \- zapewnienia szybkiego i bezpiecznego pobrania materiału do przeszczepienia. Proces oddania szpiku związany jest z koniecznością odbycia co najmniej 3 wizyt w kraju, rozłożonych w czasie, w celu wykonania odpowiednich badań. Potwierdzenie, czy [Dawca zostanie zakwalifikowany](/dawka-wiedzy/o-nowotworach-krwi/procedura-transplantacji-komorek-macierzystych "Zasady kwalifikacji do transplantacji krwi i pobrania komórek krwiotwórczych") do pobrania komórek, może potrwać miesiąc lub nawet kilkanaście tygodni ze względu na typizację potwierdzającą, szczegółowe badania, stan zdrowia Pacjenta. W tym czasie kontakt z potencjalnym Dawcą powinien przebiegać bez zakłóceń i gwarantować możliwość sprawnego przeprowadzenia wszystkich niezbędnych procedur medycznych. W przypadku Fundacji DKMS badania wykonywane są na terenie Polski, a pobranie następuje w jednej z 9 klinik, z którymi fundacja współpracuje \- w Warszawie (3 kliniki), Gdańsku, Poznaniu, Gliwicach, Krakowie, Wrocławiu i w Szczecinie. Dokładne lokalizacje klinik znajdują się [TUTAJ](/o-pobraniu/przed-pobra

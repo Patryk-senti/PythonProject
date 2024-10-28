@@ -1,0 +1,11 @@
+| **Title**       | **URL**           | **Part**              |
+|-----------------|-------------------|-----------------------|
+| Antygeny zgodności tkankowej HLA         | [https://www.dkms.pl/o-pobraniu/jest-zgodnosc/antygeny-zgodnosci-tkankowej-hla](https://www.dkms.pl/o-pobraniu/jest-zgodnosc/antygeny-zgodnosci-tkankowej-hla)    | Part 2 of 4          |
+
+na trzy klasy: HLA klasy I, II i III. Antygeny HLA o istotnym znaczeniu w transplantacjach komórek krwiotwórczych to antygeny HLA klasy I (HLA\-A, HLA\-B, HLA\-C) i klasy II (HLA\-DRB1, HLA\-DQB1, HLA\-DPB1\). Każdy człowiek ma dwa komplety antygenów HLA **klasy I** i **klasy II**, czyli tzw. haplotypy HLA, z których jeden pochodzi od matki, a drugi od ojca, co powoduje naszą dużą różnorodność. Dla każdego antygenu HLA (A, B, C, DRB1, DQB1 i DPB1\) istnieje bardzo dużo różnych wersji tego samego antygenu, co sprawia, że znalezienie Dawcy dla Pacjenta jest tak trudne. Zgodność w zakresie HLA umożliwia tolerancję immunologiczną, dzięki czemu układ odpornościowy chorego nie traktuje przeszczepionego szpiku jak ciała obcego i nie próbuje go zniszczyć. Im Dawca jest bardziej podobny do Biorcy pod względem HLA, tym większa szansa, że przeszczep nie zostanie odrzucony i nie rozwinie się choroba przeszczep przeciwko gospodarzowi (GvHD), która jest najpoważniejszym powikłaniem po przeszczepieniu komórek krwiotwórczych.
+
+
+#### OKREŚLANIE ZGODNOŚCI – DOBÓR DAWCY I BIORCY
+
+
+Dawcą przeszczepu jest często członek rodziny \- brat lub siostra, zgodny z Pacjentem w zakresie HLA. Wówczas mamy do czynienia z przeszczepieniem od dobranego Dawcy rodzinnego, w którym Dawca i Biorca odziedziczyli te same geny od matki i ojca. Plusem przy przeszczepieniach rodzinnych jest to, że oprócz zgodności antygenów HLA, dzieci od tych samych rodziców mają również podobne inne geny, co zmniejsza ryzyko powikłań po transplantacji. Jeśli w obrębie rodziny nie znajduje się zgodny Dawca, wówczas prowadzone są poszukiwania **Dawcy niespokrewnionego**, zgodnego z Biorcą w zakresie antygenów HLA. Antygeny zgodności tkankowej mogą być oznaczane serologicznie (wyłącznie HLA klasy I) lub typowane molekularnie (badanie DNA). W typowaniu, potwierdzającym HLA przed zabiegiem przeszczepienia, badanie wykonuje się metodą molekularną. Podczas badania antygenów HLA oznaczane są antygeny A, B, C, DRB1, DQB1 oraz DPB1\

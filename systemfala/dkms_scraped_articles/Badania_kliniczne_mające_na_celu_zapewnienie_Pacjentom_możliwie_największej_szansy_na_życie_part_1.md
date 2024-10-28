@@ -1,0 +1,13 @@
+| **Title**       | **URL**           | **Part**              |
+|-----------------|-------------------|-----------------------|
+| Badania kliniczne mające na celu zapewnienie Pacjentom możliwie największej szansy na życie.         | [https://www.dkms.pl/dawka-wiedzy/nauka-i-badania/badania-kliniczne-globalnie](https://www.dkms.pl/dawka-wiedzy/nauka-i-badania/badania-kliniczne-globalnie)    | Part 1 of 2          |
+
+# Badania kliniczne mające na celu zapewnienie Pacjentom możliwie największej szansy na życie.
+
+Nie zbadano jeszcze wielu mechanizmów odgrywających rolę w rozwoju i zwalczaniu chorób i nadal brakuje badań dotyczących wielu nowotworów krwi, zapewniających wystarczająco solidne wyniki oraz zalecenia dotyczące leczenia, które mogłyby służyć za wytyczne dla lekarzy. Inną kluczową metodą zwiększenia szans pacjentów na przeżycie jest optymalizacja istniejących metod leczenia. Jest to dziedzina, w której kluczowe znaczenie odgrywają fundamentalne badania naukowe i współpraca naukowa zarówno na poziomie międzynarodowym, jak i interdyscyplinarnym.
+
+
+Utworzona w 2013 roku Jednostka Badań Klinicznych powstała, by umożliwić współpracę międzynarodową na terenie Europy, ale pełni również rolę łącznika ze Stanami Zjednoczonymi. Doświadczony zespół lekarzy, biologów, biochemików, matematyków, farmaceutów i psychologów ściśle współpracuje z międzynarodowymi rejestrami przeszczepów, jak również z niemieckimi i międzynarodowymi grupami badawczymi w celu osiągnięcia celów.
+
+
+Celem wszystkich projektów badawczych jest wzmocnienie współpracy pomiędzy lekarzami i naukowcami, która przyczyni się do opracowania nowych wytycznych dotyczących leczenia oraz zorientowanych na przyszłość ustaleń poczynionych na podstawie wyników tych badań. Jednym z przykładów bieżących projektów badawczych jest badanie roli komórek NK. Komórki NK występują w ludzkiej krwi i odgrywają kluczową rolę w walce z zakażeniami wirusowymi. Mogą zostać również wykorzystane do walki z komórkami nowotworowymi. Białka, które występują na ich powierzchni, zapobiegają zniszczeniu przez nie innych komórek organizmu. Niestety ten sam klucz dla sygnału występuje jednak także w wielu komórkach białaczkowych, przez co również im udaje się uniknąć naturalnego zniszczenia. Jeśli wykorzystamy metodę leczenia, która zakłóci przekazywanie sygnału z komórek białaczkowych do komórki układu odpornościowego, przezwyciężymy jego ochronną fu

@@ -1,0 +1,14 @@
+| **Title**       | **URL**           | **Part**              |
+|-----------------|-------------------|-----------------------|
+| Dlaczego prawidłowe odżywianie chorych na nowotwory krwi i osób po przeszczepieniu komórek macierzystych jest ważne?         | [https://www.dkms.pl/dawka-wiedzy/o-programie-wsparcia-pacjentow/dlaczego-prawidlowe-odzywianie-chorych-na-nowotwory-krwi-oraz-osob-po-przeszczepieniu-komorek-macierzystych-jest-wazne](https://www.dkms.pl/dawka-wiedzy/o-programie-wsparcia-pacjentow/dlaczego-prawidlowe-odzywianie-chorych-na-nowotwory-krwi-oraz-osob-po-przeszczepieniu-komorek-macierzystych-jest-wazne)    | Part 1 of 3          |
+
+# Dlaczego prawidłowe odżywianie chorych na nowotwory krwi i osób po przeszczepieniu komórek macierzystych jest ważne?
+
+Przyczynami są m.in. takie objawy jak: brak apetytu, nudności, wymioty czy biegunka, które w istotny sposób utrudniają dostarczenie i wchłanianie pokarmów. Jednocześnie znacznie wzrasta zapotrzebowanie na wiele składników odżywczych, przede wszystkim białko oraz substancje o działaniu przeciwutleniającym, co wynika z faktu konieczności regeneracji całego układu krwiotwórczego z niewielkiej liczby przeszczepionych komórek macierzystych oraz odbudowy tkanek uszkodzonych przez intensywną chemioterapię bądź chemioradioterapię. Należy zatem dołożyć wszelkiej staranności, aby pacjenci chorujący na nowotwory krwi mieli możliwość spożywania w trakcie leczenia posiłków pełnowartościowych, dostosowanych do ich aktualnego stanu zdrowia.
+
+
+Chcesz pomóc Pacjentom i ich bliskim, szukającym niespokrewnionego Dawcy szpiku?[Zarejestruj się](/zarejestruj-sie-teraz "Zarejestruj sie teraz")
+### Dieta po przeszczepie
+
+
+W badaniach naukowych potwierdzono, iż niezwykle istotne jest zapewnienie właściwego odżywiania i w razie potrzeby włączania produktów specjalnego przeznaczenia żywieniowego u osób poddawanych [przeszczepieniu macierzystych komórek krwiotwórczych](/dawka-wiedzy/o-nowotworach-krwi/jakie-sa-rodzaje-przeszczepien-komorek-macierzystych "Jakie są rodzaje przeszczepień komórek macierzystych?") (HSCT) oraz u tych, którzy doświadczają powikłań tego procesu terapeutycznego. Brak właściwej podaży składników odżywczych oraz nieprawidłowy stan odżywienia ma bowiem wiele negatywnych następstw i przede wszystkim wiąże się z większym ryzykiem powikłań, np. ciężkich zakażeń oraz choroby przeszczep przeciw gospodarzowi (GvHD). Ponadto niewłaściwe dobrana dieta może prowadzić do opóźnienia regeneracji układu krwiotwórczego i wiązać się z gorszym stanem sprawności ogólnej oraz dłuższym czasem hospitalizacji, a nawet zwiększeniem śmiertelności około\-przeszczepowej \[1\-9].
