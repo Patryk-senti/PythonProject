@@ -6,7 +6,9 @@
 import scrapy
 
 
-class SystemfalaItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
+class CountryGdpItem(scrapy.Item):
+    country_name = scrapy.Field()
+    IMF_forecast= scrapy.Field()
+    year = scrapy.Field()
+    WorldBank_estimate = scrapy.Field()
     pass

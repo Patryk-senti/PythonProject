@@ -12,6 +12,10 @@ BOT_NAME = "papspider"
 SPIDER_MODULES = ["systemfala.spiders"]
 NEWSPIDER_MODULE = "systemfala.spiders"
 
+DOWNLOAD_HANDLERS = {
+    "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+    "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+}
 
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 
